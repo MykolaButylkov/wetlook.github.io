@@ -20,7 +20,7 @@ const shopList = [
       workSchedule: "понеділок - неділя 9:00 - 18:00",
       extraWorkSchedule: "у день перед оновленням товару працює до 11:00",
       shopGallery: ["./img/5-nekrasova.jpg", "./img/6-nekrasova.jpg"],
-      prices: ["60", "20", "340", "299", "244", "191", "134"],
+      prices: [''],
       googleMaps: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2691.581063321923!2d34.3876789!3d47.575939!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dca3971ad21005%3A0x1634d2b4ade34f78!2z0LLRg9C70LjRhtGPINCV0LvQtdC60YLRgNC-0LzQtdGC0LDQu9GD0YDQs9GW0LIsIDk2LCDQndGW0LrQvtC_0L7Qu9GMLCDQlNC90ZbQv9GA0L7Qv9C10YLRgNC-0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNTMyMDA!5e0!3m2!1suk!2sua!4v1687392930503!5m2!1suk!2sua",
       id: "002"
   },
@@ -75,8 +75,27 @@ const App = () => {
     function handlePrice(shop) {
         const day = date.getDay() // Sunday - Saturday : 0 - 6
 
+        if (shop.title === 'Nekrasova') {
+            return 'Цін ще не бачив, і не факт, що колись побачу'
+        }
+
+        if (shop.prices[day] === '43') {
+            return`Сьогодні тут найнижча ціна: ${shop.prices[day]} грн/кг`
+        }
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]} грн` :  'можна побачити на фото'
     }
+
+    function sortedShops(shop) {
+        const day = date.getDay() // Sunday - Saturday : 0 - 6
+
+        if (+shop.prices[day] > 0) {
+            return +shop.prices[day];
+        }
+
+        return Infinity ;
+    }
+
+    const visibleShops = shopList.sort((a, b) => (sortedShops(a) - sortedShops(b)))
 
   return (
     <>
@@ -88,10 +107,10 @@ const App = () => {
             />
         </header>
         <main className="main">
-            <div className='main'>
+            <div>
                 <h2 className="main__title">Секонд-Хенди Нікополя з цінами та графіком роботи</h2>
                 <ul className="shop-list" >
-                    {shopList.map(shop => {
+                    {visibleShops.map(shop => {
                         return (
                             <>
                             <li className="shop-list__shop" key={shop.id}>
@@ -128,7 +147,7 @@ const App = () => {
                                         className='inframe'
                                         title={shop.title}
                                         src={shop.googleMaps}
-                                        allowfullscreen=""
+                                        allowfullscreen=''
                                         loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"
                                     ></iframe>

@@ -18,18 +18,20 @@ body {
 }
 
 .header__logo {
+    width: 320px;
 }
 
 /*#endregion*/
 /*#region main*/
 .main {
+
     display: grid;
     padding: 10px;
     row-gap: 30px;
 }
 
 .main__title {
-    font-size: 35px;
+    font-size: 1.3em;
     font-weight: 600;
     color: #141212;
     grid-column: 1 / -1 ;
@@ -43,8 +45,8 @@ body {
 
 .shop-list__shop {
     display: flex;
-    margin: 20px 0 50px;
-    gap: 20px;
+    margin: 10px 0 20px;
+    gap: 10px;
 }
 
 .shop__gallery {
@@ -53,8 +55,8 @@ body {
 /*#endregion*/
 /*#region gallery*/
 .gallery__bigImg {
-    width: 300px;
-    height: 400px;
+    width: 150px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -63,7 +65,7 @@ body {
 }
 
 .gallery__smallImg  {
-    width: 100px;
+    width: 50px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -72,31 +74,26 @@ body {
 .shop__description {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 10px;
     font-weight: 400;
     gap: 5px;
 }
 
 .shop__description :first-child {
-    font-size: 30px;
+    font-size: 13px;
     font-weight: 600;
 }
-.google-maps-icon {
-    width: 90px;
-    border-radius: 10px;
-    box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, .2);
-}
+
 .inframe {
-    width: 200px;
-    height: 280px;
+    width: 140px;
+    height: 160px;
     border: 1px solid gray;
     border-radius: 5px;
-    
 }
 
 .price-wrapper {
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .price {
@@ -112,5 +109,6 @@ body {
 
 footer {
     text-align: center;
+    font-size: 10px;
     margin-bottom: 5px;
 }
