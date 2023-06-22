@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/wetlook.github.io/static/css/main.bb31dd43.css",
-    "main.js": "/wetlook.github.io/static/js/main.529d7ada.js",
-    "static/js/787.28cb0dcd.chunk.js": "/wetlook.github.io/static/js/787.28cb0dcd.chunk.js",
+    "main.css": "/wetlook.github.io/static/css/main.cb16b755.css",
+    "main.js": "/wetlook.github.io/static/js/main.1c8ead6f.js",
+    "static/js/787.85a6d448.chunk.js": "/wetlook.github.io/static/js/787.85a6d448.chunk.js",
     "static/media/20-bigShopStadion.jpg": "/wetlook.github.io/static/media/20-bigShopStadion.83018be153940f4bcbfa.jpg",
     "static/media/19-bigShopStadion.jpg": "/wetlook.github.io/static/media/19-bigShopStadion.a0b38c2ea6864d5b2d3d.jpg",
     "static/media/1-richka8kv.jpg": "/wetlook.github.io/static/media/1-richka8kv.499d8e50e67e5cdc0170.jpg",
@@ -28,12 +28,12 @@
     "static/media/logo-2.jpg": "/wetlook.github.io/static/media/logo-2.50b2e50b6a52c7042d96.jpg",
     "static/media/logo.svg": "/wetlook.github.io/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/wetlook.github.io/index.html",
-    "main.bb31dd43.css.map": "/wetlook.github.io/static/css/main.bb31dd43.css.map",
-    "main.529d7ada.js.map": "/wetlook.github.io/static/js/main.529d7ada.js.map",
-    "787.28cb0dcd.chunk.js.map": "/wetlook.github.io/static/js/787.28cb0dcd.chunk.js.map"
+    "main.cb16b755.css.map": "/wetlook.github.io/static/css/main.cb16b755.css.map",
+    "main.1c8ead6f.js.map": "/wetlook.github.io/static/js/main.1c8ead6f.js.map",
+    "787.85a6d448.chunk.js.map": "/wetlook.github.io/static/js/787.85a6d448.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb31dd43.css",
-    "static/js/main.529d7ada.js"
+    "static/css/main.cb16b755.css",
+    "static/js/main.1c8ead6f.js"
   ]
 }
