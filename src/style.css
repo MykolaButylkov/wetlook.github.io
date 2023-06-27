@@ -10,7 +10,8 @@ body {
 /*#region header*/
 .header {
     display: flex;
-    margin: auto;
+    justify-content: center;
+    background-color: #fff;
 }
 
 .header__title {
@@ -24,13 +25,15 @@ body {
 /*#endregion*/
 /*#region main*/
 .main {
-
     display: grid;
     padding: 10px;
     row-gap: 30px;
+    max-width: 390px;
+    margin: auto;
 }
 
 .main__title {
+    max-width: 100%;
     font-size: 1.3em;
     font-weight: 600;
     color: #141212;
@@ -54,10 +57,12 @@ body {
 }
 /*#endregion*/
 /*#region gallery*/
+
 .gallery__bigImg {
-    width: 150px;
+    max-width: 150px;
     height: 200px;
     object-fit: cover;
+    border-radius: 3px;
 }
 
 .gallery__container {
@@ -66,8 +71,9 @@ body {
 
 .gallery__smallImg  {
     width: 50px;
+    margin-inline: 1px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 /*#endregion*/
 /*#region shop*/

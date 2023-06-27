@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import './style.css'
 
-const shopList = [
+export const shopList = [
   {
       title: "Richka",
       description: "Біля 8-го кварталу і магазину Velox",
       workSchedule: "четверг - понеділок 9:00 - 18:00",
       extraWorkSchedule: "вівторок 9:00 - 15:00",
       shopGallery: [`./img/1-richka8kv.jpg`, "./img/2-richka8kv.jpg", "./img/3-richka8kv.jpg"],
-      prices: ["./img/3-richka8kv.jpg"],
+      prices: ["268", "249", "222", "199", "167", "138", "112", "95", "76", "42", "399", "362", "328", "296"],
       googleMaps: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2691.727851408161!2d34.388972200000005!3d47.57308330000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDfCsDM0JzIzLjEiTiAzNMKwMjMnMjAuMyJF!5e0!3m2!1suk!2sua!4v1687378694643!5m2!1suk!2sua",
       id: "001"
   },
@@ -50,7 +50,7 @@ const shopList = [
       workSchedule: "п'ятниця - середа 9:00 - 18:00",
       extraWorkSchedule: "четверг 9:00 - 14:00",
       shopGallery: ["./img/17-richkaStadion.jpg", "./img/15-richkaStadion.jpg", "./img/16-richkaStadion.jpg"],
-      prices: [],
+      prices: ["328", "296", "268", "249", "222", "199", "167", "138", "112", "95", "76", "42", "399", "362"],
       googleMaps: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1346.1435079476548!2d34.3939711!3d47.5622038!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dca3be691a8a37%3A0xb52ba7c1ba7b3ba!2z0KHQsNC70L7QvSDQvNC10LHQtdC70LggRG9tbWlubw!5e0!3m2!1suk!2sua!4v1687393070492!5m2!1suk!2sua",
       id: "005"
   },
@@ -68,25 +68,49 @@ const shopList = [
 
 
 const App = () => {
-    const [indexMainFoto, setIndexMainFoto] = useState(0); 
+    const [index, setIndex] = useState(7); 
+    const [indexMainFoto, setIndexMainFoto] = useState(0);
 
     const date = new Date(); 
-
+    const day = date.getDay() // Sunday - Saturday : 0 - 6
+    
+    useEffect(() => {
+        if (day === 0) {
+            if (index === 7) {
+                setIndex(0)
+            }
+            if (index === 0) {
+                setIndex(7)
+            }
+        }
+    }, [])
+    
     function handlePrice(shop) {
-        const day = date.getDay() // Sunday - Saturday : 0 - 6
-
         if (shop.title === 'Nekrasova') {
             return 'Цін ще не бачив, і не факт, що колись побачу'
         }
 
         if (shop.prices[day] === '43') {
-            return`Сьогодні тут найнижча ціна: ${shop.prices[day]} грн/кг`
+            return `Сьогодні тут краща ціна: ${shop.prices[day]} грн/кг`
         }
+
+        if (shop.id === '005' || shop.id === '001') {
+            let i = day + index;
+
+            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]} грн/кг`: `Сьогодні за кг: ${shop.prices[i]} грн`
+        }
+
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]} грн` :  'можна побачити на фото'
     }
 
     function sortedShops(shop) {
         const day = date.getDay() // Sunday - Saturday : 0 - 6
+
+        if (shop.id === '005' || shop.id === '001') {
+            let i = day + index;
+
+            return +shop.prices[i];
+        }
 
         if (+shop.prices[day] > 0) {
             return +shop.prices[day];
@@ -115,7 +139,7 @@ const App = () => {
                             <>
                             <li className="shop-list__shop" key={shop.id}>
                                 <div className="shop__gallery">
-                                    <div id="gallery__bigImg">
+                                    <div id="gallery__container-bigImg">
                                         {shop.shopGallery[indexMainFoto]
                                             ? (<img className="gallery__bigImg" src={require(`${shop.shopGallery[indexMainFoto]}`)} alt={`${shop.title}`} />)
                                             : (<img className="gallery__bigImg" src={require(`${shop.shopGallery[0]}`)} alt={`${shop.title}`} />)}
