@@ -104,8 +104,6 @@ const App = () => {
     }
 
     function sortedShops(shop) {
-        const day = date.getDay() // Sunday - Saturday : 0 - 6
-
         if (shop.id === '005' || shop.id === '001') {
             let i = day + index;
 
