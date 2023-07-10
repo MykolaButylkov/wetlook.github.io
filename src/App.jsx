@@ -68,12 +68,10 @@ export const shopList = [
 
 
 const App = () => {
-    const [indexDay, setIndexDay] = useState(0); 
     const [indexMainFoto, setIndexMainFoto] = useState(0);
 
-    // const date = new Date(); 
-    // const day = date.getDay() // Sunday - Saturday : 0 - 6
-    const day = 1 // Sunday - Saturday : 0 - 6
+    const date = new Date(); 
+    const day = date.getDay() // Sunday - Saturday : 0 - 6
     
     function handlePrice(shop) {
         if (shop.title === 'Nekrasova') {
@@ -85,7 +83,7 @@ const App = () => {
         }
 
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + indexDay;
+            let i = day + 7;
 
             return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]}грн/кг`: `Сьогодні за кг: ${shop.prices[i]}грн або ${shop.prices[day]}грн`
         }
@@ -95,7 +93,7 @@ const App = () => {
 
     function sortedShops(shop) {
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + indexDay;
+            let i = day + 7;
 
             return +shop.prices[i];
         }
@@ -108,14 +106,6 @@ const App = () => {
     }
 
     const visibleShops = shopList.sort((a, b) => (sortedShops(a) - sortedShops(b)));
-
-    useEffect(() => {
-        if (day === 0 && indexDay === 7) {
-            setIndexDay(0)
-        } else {
-            setIndexDay(7);
-        }
-    }, []);
 
   return (
     <>
