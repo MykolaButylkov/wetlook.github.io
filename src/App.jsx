@@ -68,22 +68,12 @@ export const shopList = [
 
 
 const App = () => {
-    const [index, setIndex] = useState(7); 
+    const [indexDay, setIndexDay] = useState(0); 
     const [indexMainFoto, setIndexMainFoto] = useState(0);
 
-    const date = new Date(); 
-    const day = date.getDay() // Sunday - Saturday : 0 - 6
-    
-    useEffect(() => {
-        if (day === 0) {
-            if (index === 7) {
-                setIndex(0)
-            }
-            if (index === 0) {
-                setIndex(7)
-            }
-        }
-    }, [])
+    // const date = new Date(); 
+    // const day = date.getDay() // Sunday - Saturday : 0 - 6
+    const day = 1 // Sunday - Saturday : 0 - 6
     
     function handlePrice(shop) {
         if (shop.title === 'Nekrasova') {
@@ -95,9 +85,9 @@ const App = () => {
         }
 
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + index;
+            let i = day + indexDay;
 
-            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]} грн/кг`: `Сьогодні за кг: ${shop.prices[i]} грн`
+            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]} грн/кг`: `Сьогодні за кг: ${shop.prices[i]} грн або ${shop.prices[day]}грн`
         }
 
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]} грн` :  'можна побачити на фото'
@@ -105,7 +95,7 @@ const App = () => {
 
     function sortedShops(shop) {
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + index;
+            let i = day + indexDay;
 
             return +shop.prices[i];
         }
@@ -117,7 +107,15 @@ const App = () => {
         return Infinity ;
     }
 
-    const visibleShops = shopList.sort((a, b) => (sortedShops(a) - sortedShops(b)))
+    const visibleShops = shopList.sort((a, b) => (sortedShops(a) - sortedShops(b)));
+
+    useEffect(() => {
+        if (day === 0 && indexDay === 7) {
+            setIndexDay(0)
+        } else {
+            setIndexDay(7);
+        }
+    }, []);
 
   return (
     <>
@@ -129,42 +127,41 @@ const App = () => {
             />
         </header>
         <main className="main">
-            <div>
-                <h2 className="main__title">Секонд-Хенди Нікополя з цінами та графіком роботи</h2>
-                <ul className="shop-list" >
-                    {visibleShops.map(shop => {
-                        return (
-                            <>
-                            <li className="shop-list__shop" key={shop.id}>
-                                <div className="shop__gallery">
-                                    <div id="gallery__container-bigImg">
-                                        {shop.shopGallery[indexMainFoto]
-                                            ? (<img className="gallery__bigImg" src={require(`${shop.shopGallery[indexMainFoto]}`)} alt={`${shop.title}`} />)
-                                            : (<img className="gallery__bigImg" src={require(`${shop.shopGallery[0]}`)} alt={`${shop.title}`} />)}
-                                        <div className="gallery__container">
-                                            {shop.shopGallery.map((foto, index) => (
-                                                <img
-                                                    className="gallery__smallImg"
-                                                    src={require(`${foto}`)}
-                                                    alt={`${shop.title}`}
-                                                    onClick={() => (setIndexMainFoto(index))} 
-                                                />
-                                            )
-                                            )}
-                                        </div>
+            <h2 className="main__title">Секонд-Хенди Нікополя з цінами та графіком роботи</h2>
+            <ul className="shop-list" >
+                {visibleShops.map(shop => {
+                    return (
+                        <li className="shop-list__shop" key={shop.id}>
+                            <div className="shop__gallery">
+                                <div id="gallery__container-bigImg">
+                                    {shop.shopGallery[indexMainFoto]
+                                        ? (<img className="gallery__bigImg" src={require(`${shop.shopGallery[indexMainFoto]}`)} alt={`${shop.title}`} />)
+                                        : (<img className="gallery__bigImg" src={require(`${shop.shopGallery[0]}`)} alt={`${shop.title}`} />)}
+                                    <div className="gallery__container">
+                                        {shop.shopGallery.map((foto, index) => (
+                                            <img
+                                                className="gallery__smallImg"
+                                                src={require(`${foto}`)}
+                                                alt={`${shop.title}`}
+                                                onClick={() => (setIndexMainFoto(index))} 
+                                            />
+                                        )
+                                        )}
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="shop__description">
-                                        <h3>{shop.title}</h3>
-                                        <p>{shop.description}</p>
-                                        <p>{shop.workSchedule}<br />{shop.extraWorkSchedule}</p>
+                            </div>
+                            <div className="container-shop-description">
+                                <div className="shop__description">
+                                    <h3>{shop.title}</h3>
+                                    <p>{shop.description}</p>
+                                    <p>{shop.workSchedule}<br />{shop.extraWorkSchedule}</p>
 
-                                        <div className="price-wrapper">
-                                            <p id="price" className="price">{handlePrice(shop)}</p>
-                                        </div>
+                                    <div className="price-wrapper">
+                                        <p id="price" className="price">{handlePrice(shop)}</p>
                                     </div>
+                                </div>
 
+                                <div className="conteiner-inframe">
                                     <iframe
                                         className='inframe'
                                         title={shop.title}
@@ -174,12 +171,11 @@ const App = () => {
                                         referrerpolicy="no-referrer-when-downgrade"
                                     ></iframe>
                                 </div>
-                            </li>
-                            </>
-                        )
-                    })}
-                </ul>
-            </div>
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
         </main>
         <footer>© Copyright 2023 By Mykola Butylkov</footer>
     </>
