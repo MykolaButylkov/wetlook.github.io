@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 import './style.css'
@@ -71,7 +71,7 @@ const App = () => {
     const [indexMainFoto, setIndexMainFoto] = useState(0);
 
     const date = new Date(); 
-    const day = date.getDay() // Sunday - Saturday : 0 - 6
+    const day = date.getDay(); // Sunday - Saturday : 0 - 6
     
     function handlePrice(shop) {
         if (shop.title === 'Nekrasova') {
