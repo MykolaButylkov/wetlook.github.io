@@ -81,16 +81,16 @@ const App = () => {
         }
 
         if (shop.prices[day] === '43') {
-            return `Сьогодні тут краща ціна: ${shop.prices[day]} грн/кг`
+            return `Сьогодні тут краща ціна: ${shop.prices[day]}грн/кг`
         }
 
         if (shop.id === '005' || shop.id === '001') {
             let i = day + indexDay;
 
-            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]} грн/кг`: `Сьогодні за кг: ${shop.prices[i]} грн або ${shop.prices[day]}грн`
+            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]}грн/кг`: `Сьогодні за кг: ${shop.prices[i]}грн або ${shop.prices[day]}грн`
         }
 
-        return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]} грн` :  'можна побачити на фото'
+        return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]}грн` :  'можна побачити на фото'
     }
 
     function sortedShops(shop) {

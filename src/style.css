@@ -26,12 +26,12 @@ body {
 .main {
     display: grid;
     padding: 10px;
-    row-gap: 30px;
     max-width: 390px;
     margin: auto;
 }
 
 .main__title {
+    margin: auto;
     max-width: 100%;
     font-size: 1.3em;
     font-weight: 600;
@@ -53,7 +53,7 @@ body {
 
 .shop-list__shop {
     display: flex;
-    margin: 10px 0 20px;
+    margin: 20px 0;
     gap: 10px;
 }
 
@@ -141,6 +141,7 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        width: 100%;
     }
     .conteiner-inframe {
         display: flex;
