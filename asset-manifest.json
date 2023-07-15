@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wetlook.github.io/static/css/main.51670c02.css",
-    "main.js": "/wetlook.github.io/static/js/main.aa6d4cdb.js",
+    "main.css": "/wetlook.github.io/static/css/main.f85464a2.css",
+    "main.js": "/wetlook.github.io/static/js/main.da12d526.js",
     "static/js/787.85a6d448.chunk.js": "/wetlook.github.io/static/js/787.85a6d448.chunk.js",
     "static/media/20-bigShopStadion.jpg": "/wetlook.github.io/static/media/20-bigShopStadion.83018be153940f4bcbfa.jpg",
     "static/media/19-bigShopStadion.jpg": "/wetlook.github.io/static/media/19-bigShopStadion.a0b38c2ea6864d5b2d3d.jpg",
@@ -28,12 +28,12 @@
     "static/media/logo-2.jpg": "/wetlook.github.io/static/media/logo-2.50b2e50b6a52c7042d96.jpg",
     "static/media/logo.svg": "/wetlook.github.io/static/media/logo.6ce24c58023cc2f8fd88.svg",
     "index.html": "/wetlook.github.io/index.html",
-    "main.51670c02.css.map": "/wetlook.github.io/static/css/main.51670c02.css.map",
-    "main.aa6d4cdb.js.map": "/wetlook.github.io/static/js/main.aa6d4cdb.js.map",
+    "main.f85464a2.css.map": "/wetlook.github.io/static/css/main.f85464a2.css.map",
+    "main.da12d526.js.map": "/wetlook.github.io/static/js/main.da12d526.js.map",
     "787.85a6d448.chunk.js.map": "/wetlook.github.io/static/js/787.85a6d448.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.51670c02.css",
-    "static/js/main.aa6d4cdb.js"
+    "static/css/main.f85464a2.css",
+    "static/js/main.da12d526.js"
   ]
 }
