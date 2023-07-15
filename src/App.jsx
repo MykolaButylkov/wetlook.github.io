@@ -85,7 +85,7 @@ const App = () => {
         if (shop.id === '005' || shop.id === '001') {
             let i = day + 7;
 
-            return shop.prices[i] === '42' ? `Сьогодні тут краща ціна: ${shop.prices[i]}грн/кг`: `Сьогодні за кг: ${shop.prices[i]}грн або ${shop.prices[day]}грн`
+            return `Сьогодні за кг: ${shop.prices[i]}грн або ${shop.prices[day]}грн`
         }
 
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]}грн` :  'можна побачити на фото'
