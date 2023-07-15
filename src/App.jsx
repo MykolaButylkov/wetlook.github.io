@@ -72,7 +72,12 @@ const App = () => {
 
     const date = new Date(); 
     const day = date.getDay(); // Sunday - Saturday : 0 - 6
-    
+    const startDate = new Date(date.getFullYear(), 0, 1);
+    const days = Math.floor((date - startDate) /
+    (24 * 60 * 60 * 1000));
+ 
+    var weekNumber = Math.ceil(days / 7);
+ 
     function handlePrice(shop) {
         if (shop.title === 'Nekrasova') {
             return 'Цін ще не бачив, і не факт, що колись побачу'
@@ -83,9 +88,9 @@ const App = () => {
         }
 
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + 7;
+            let i = weekNumber % 2 !== 0 ? day : day + 7;
 
-            return `Сьогодні за кг: ${shop.prices[i]}грн або ${shop.prices[day]}грн`
+            return `Сьогодні за кг: ${shop.prices[i]}грн`
         }
 
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]}грн` :  'можна побачити на фото'
@@ -93,7 +98,7 @@ const App = () => {
 
     function sortedShops(shop) {
         if (shop.id === '005' || shop.id === '001') {
-            let i = day + 7;
+            let i = weekNumber % 2 !== 0 ? day : day + 7;
 
             return +shop.prices[i];
         }
@@ -106,6 +111,7 @@ const App = () => {
     }
 
     const visibleShops = shopList.sort((a, b) => (sortedShops(a) - sortedShops(b)));
+    const richkaPriceComment = ['005', '001']; 
 
   return (
     <>
@@ -148,6 +154,9 @@ const App = () => {
 
                                     <div className="price-wrapper">
                                         <p id="price" className="price">{handlePrice(shop)}</p>
+                                        {(richkaPriceComment.includes(shop.id)) && (
+                                            <div className="price-comment">{'точність цін у цьому магазині ще на стадії тестування'}</div>
+                                        )}
                                     </div>
                                 </div>
 
