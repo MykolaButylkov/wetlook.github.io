@@ -72,11 +72,6 @@ const App = () => {
 
     const date = new Date(); 
     const day = date.getDay(); // Sunday - Saturday : 0 - 6
-    const startDate = new Date(date.getFullYear(), 0, 1);
-    const days = Math.floor((date - startDate) /
-    (24 * 60 * 60 * 1000));
- 
-    var weekNumber = Math.ceil(days / 7);
  
     function handlePrice(shop) {
         if (shop.title === 'Nekrasova') {
@@ -88,9 +83,7 @@ const App = () => {
         }
 
         if (shop.id === '005' || shop.id === '001') {
-            let i = weekNumber % 2 !== 0 ? day : day + 7;
-
-            return `Сьогодні за кг: ${shop.prices[i]}грн`
+            return `Сьогодні за кг: ${shop.prices[day]}грн або ${shop.prices[day + 7]}грн`
         }
 
         return shop.prices[day] ? `Сьогодні за кг: ${shop.prices[day]}грн` :  'можна побачити на фото'
@@ -98,7 +91,7 @@ const App = () => {
 
     function sortedShops(shop) {
         if (shop.id === '005' || shop.id === '001') {
-            let i = weekNumber % 2 !== 0 ? day : day + 7;
+            let i = +shop.prices[day] < +shop.prices[day + 7] ? day : day + 7;
 
             return +shop.prices[i];
         }
